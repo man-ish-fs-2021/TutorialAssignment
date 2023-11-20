@@ -1,7 +1,7 @@
-import React, { Children, ElementType, ReactNode, useState } from "react";
+import { Children, ElementType, ReactNode, useState } from "react";
 import { buttonStyles } from "../../component/Button/ButtonStyles";
 import { twMerge } from "tailwind-merge";
-import { ChevronDown, ChevronUp, Home } from "lucide-react";
+import { ChevronDown, ChevronUp, Home, SquareCode } from "lucide-react";
 import { Button } from "../../component";
 import { icon, subscriptions } from "../../data";
 import { useSidebarContext } from "../../context/SidebarContext";
@@ -11,6 +11,7 @@ type SmallSidebarItemProps = {
   icon: ElementType;
   title: string;
   url: string;
+  isActive?: boolean;
 };
 type LargeSidebarItemProps = {
   iconOrImageUrl: ElementType | string;
@@ -26,18 +27,21 @@ type LargeSidebarSectionProps = {
 const SmallSidebarItem = ({
   icon: Icon,
   title,
-  url,
-}: SmallSidebarItemProps) => {
+  isActive,
+}: // url,
+SmallSidebarItemProps) => {
   return (
     <a
-      href={url}
+      href="/"
       className={twMerge(
         buttonStyles({ variant: "ghost" }),
-        "py-4 px-1 flex flex-col items-center rounded-lg gap-1"
+        `py-4 px-1 flex flex-col items-center rounded-lg gap-1 ${
+          isActive ? "font-bold bg-neutral-100 hover:bg-secondary" : ""
+        }`
       )}
     >
       <Icon className="w-6 h-6" />
-      <div className="tex-sm">{title}</div>
+      <div className="tex-sm ">{title}</div>
     </a>
   );
 };
@@ -74,12 +78,12 @@ const LargeSidebarSection = ({
 const LargeSidebarItem = ({
   iconOrImageUrl: Icon,
   title,
-  url,
+  // url,
   isActive,
 }: LargeSidebarItemProps) => {
   return (
     <a
-      href={url}
+      href="/"
       className={twMerge(
         buttonStyles({ variant: "ghost" }),
         `w-full flex items-center rounded-lg gap-4 p-3 ${
@@ -110,6 +114,7 @@ const Sidebar = () => {
         } `}
       >
         <SmallSidebarItem icon={Home} title="Home" url="/" />
+        <SmallSidebarItem isActive icon={SquareCode} title="Frontend" url="/" />
       </aside>
       {isSmallOpen && (
         <div

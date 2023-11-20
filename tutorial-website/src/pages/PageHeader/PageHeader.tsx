@@ -20,7 +20,7 @@ export const PageHeaderFirstSection = ({
         <Menu />
       </Button>
       <a href="/">
-        <h1 className="text-2xl">Coding Ventures</h1>
+        <h1 className="text-2xl">Coding.Ventures</h1>
       </a>
     </div>
   );
@@ -79,7 +79,7 @@ const PageHeader = () => {
           <Mic />
         </Button>
         <Button size="default" variant="ghost">
-          Quiz
+          <a href="/quiz">Quiz</a>
         </Button>
         <Button size="icon" variant="ghost">
           <Bell />

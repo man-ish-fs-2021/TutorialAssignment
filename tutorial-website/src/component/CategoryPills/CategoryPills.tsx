@@ -35,7 +35,7 @@ const CategoryPills = ({
   return (
     <>
       <div>
-        <p className="text-xl font-light">Subject Topics:</p>
+        <p className="text-lg font-light">Subject Topics:</p>
       </div>
       <div ref={containerRef} className="overflow-x-hidden relative">
         <div

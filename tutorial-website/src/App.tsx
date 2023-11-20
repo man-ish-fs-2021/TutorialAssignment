@@ -2,8 +2,9 @@ import { useState } from "react";
 import "./App.css";
 import { CategoryPills } from "./component";
 import { categories } from "./data";
-import { PageHeader, Sidebar, SubjectPage } from "./pages";
+import { PageHeader, Quiz, Sidebar, SubjectPage } from "./pages";
 import SidebarPorvider from "./context/SidebarContext";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState(categories[0]);
@@ -21,7 +22,16 @@ function App() {
                 categories={categories}
               />
             </div>
-            <SubjectPage />
+            <BrowserRouter>
+              <Switch>
+                <Route exact path="/">
+                  <SubjectPage />
+                </Route>
+                <Route exact path="/quiz">
+                  <Quiz />
+                </Route>
+              </Switch>
+            </BrowserRouter>
           </div>
         </div>
       </div>
