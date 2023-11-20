@@ -92,14 +92,18 @@ const Quiz = () => {
       <hr className="my-2" />
       <form key={`${isSubmitted}`} onSubmit={(e) => e.preventDefault()}>
         {quiz.map((eachQuestion, index) => (
-          <div key={eachQuestion.question}>
-            <h1 className="text-lg font-medium">
+          <div className="py-3" key={eachQuestion.question}>
+            <h1 className="py-2 text-lg font-medium">
               {index + 1}. {eachQuestion.question}
             </h1>
             <div className="flex flex-col gap-2">
               {eachQuestion.answers.map((eachOption, idx) => (
-                <div key={eachOption} className="ml-10">
+                <div
+                  key={eachOption}
+                  className="ml-10 px-2 hover:bg-gray-100 w-fit flex items-center  rounded-md"
+                >
                   <input
+                    // className="px-3"
                     onChange={(e) =>
                       handleSelected(e.target.value, index + 1, idx)
                     }
@@ -107,7 +111,10 @@ const Quiz = () => {
                     value={eachOption}
                     type="radio"
                   />
-                  <label htmlFor={eachOption}> {eachOption}</label>
+                  <label className="pl-1 py-1" htmlFor={eachOption}>
+                    {" "}
+                    {eachOption}
+                  </label>
                 </div>
               ))}
             </div>
